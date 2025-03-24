@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['student_name'] = $student['HoTen'];
 
         // Redirect to course listing page
-        header('Location: hoc_phan.php');
+        header('Location: hocPhan.php');
         exit;
     } else {
         $message = 'Invalid student ID';

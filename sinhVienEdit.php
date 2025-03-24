@@ -112,7 +112,7 @@ ob_start();
 
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mb-4">Hiệu chỉnh thông tin sinh viên</h2>
+        <h2 class="mb-4">chỉnh thông tin sinh viên</h2>
 
         <?php if ($message): ?>
             <div class="alert"><?php echo $message; ?></div>

@@ -136,8 +136,7 @@ ob_start();
 
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mb-4">XÓA THÔNG TIN</h2>
-        <h4>Are you sure you want to delete this?</h4>
+        <h2 class="mb-4">XÓA THÔNG TIN SINH VIÊN</h2>
 
         <?php if ($message): ?>
             <div class="alert alert-danger"><?php echo $message; ?></div>

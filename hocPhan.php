@@ -35,8 +35,7 @@ if (isset($_GET['register']) && !empty($_GET['register'])) {
     }
 
     // Redirect to avoid duplicate submission
-    header('Location: hocP
-    han.php');
+    header('Location: hocPhan.php');
     exit;
 }
 
@@ -169,8 +168,7 @@ ob_start();
                             <td><?php echo $course['SoLuong']; ?></td>
                             <td>
                                 <?php if (isset($_SESSION['student_id'])): ?>
-                                    <a href="hocP
-                                    han.php?register=<?php echo $course['MaHP']; ?>"
+                                    <a href="hocPhan.php?register=<?php echo $course['MaHP']; ?>"
                                         class="btn btn-sm btn-success">Đăng ký</a>
                                 <?php else: ?>
                                     <a href="dangNhap.php" class="btn btn-sm btn-secondary">Đăng nhập để đăng ký</a>

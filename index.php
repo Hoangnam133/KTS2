@@ -127,7 +127,7 @@ ob_start();
 
 <div class="row">
     <div class="col-md-12">
-        <h2 class="mb-4">TRANG SINH VIÊN</h2>
+        <h2 class="mb-4">TRANG DANH SÁCH SINH VIÊN</h2>
         <a href="sinhVienAdd.php" class="btn btn-success mb-3">Add Student</a>
 
         <table class="table table-bordered">
@@ -137,7 +137,7 @@ ob_start();
                     <th>HoTen</th>
                     <th>GioiTinh</th>
                     <th>NgaySinh</th>
-                    <th>Hinh</th>
+                    <th>Hình</th>
                     <th>MaNganh</th>
                     <th>Actions</th>
                 </tr>
