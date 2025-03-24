@@ -1,21 +1,21 @@
 <?php
-// Include database connection
+
 require_once 'config/db.php';
 require_once 'models/SinhVien.php';
 
-// Create student model instance
+
 $sinhVienModel = new SinhVien($conn);
 
-// Get all students
+
 $students = $sinhVienModel->getAllStudents();
 
-// Start output buffer
+
 ob_start();
 ?>
 
 <style>
     body {
-        background-color: #f0f8ff; /* Light blue background */
+        background-color: #f0f8ff; 
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -31,11 +31,11 @@ ob_start();
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 90%; /* Adjust width as needed */
+        width: 90%; 
     }
 
     h2 {
-        color: #007bff; /* Blue heading */
+        color: #007bff; 
         text-align: center;
         margin-bottom: 30px;
     }
@@ -53,7 +53,7 @@ ob_start();
     }
 
     .table th {
-        background-color: #ffc107; /* Yellow header */
+        background-color: #ffc107; 
         color: #000;
         font-weight: bold;
     }
@@ -71,7 +71,7 @@ ob_start();
     }
 
     .btn-success {
-        background-color: #4caf50; /* Green button */
+        background-color: #4caf50; 
         color: white;
     }
 
@@ -80,7 +80,7 @@ ob_start();
     }
 
     .btn-primary {
-        background-color: #ffc107; /* Yellow button */
+        background-color: #ffc107; 
         color: #000;
         font-weight: bold;
     }
@@ -90,7 +90,7 @@ ob_start();
     }
 
     .btn-info {
-        background-color: #007bff; /* Blue button */
+        background-color: #007bff; 
         color: white;
     }
 
@@ -99,7 +99,7 @@ ob_start();
     }
 
     .btn-danger {
-        background-color: #d32f2f; /* Red button */
+        background-color: #d32f2f; 
         color: white;
     }
 
@@ -174,9 +174,9 @@ ob_start();
 </div>
 
 <?php
-// Get content from buffer
+
 $content = ob_get_clean();
 
-// Include layout
+
 include 'views/layout.php';
 ?>

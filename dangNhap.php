@@ -1,28 +1,25 @@
 <?php 
-// Include database connection and models
+
 require_once 'config/db.php';
 require_once 'models/SinhVien.php';
 
-// Start session
+
 session_start();
 
-// Create student model
+
 $sinhVienModel = new SinhVien($conn);
 
-// Process login form
+
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $maSV = $_POST['MaSV'];
 
-    // Check if student exists
     $student = $sinhVienModel->getStudentById($maSV);
 
     if ($student) {
-        // Set session variables
         $_SESSION['student_id'] = $student['MaSV'];
         $_SESSION['student_name'] = $student['HoTen'];
 
-        // Redirect to course listing page
         header('Location: hocPhan.php');
         exit;
     } else {
@@ -30,13 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Start output buffer
+
 ob_start();
 ?>
 
 <style>
     body {
-        background-color: #f0f8ff; /* Light blue background */
+        background-color: #f0f8ff;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -55,14 +52,14 @@ ob_start();
     }
 
     h2 {
-        color: #007bff; /* Blue heading */
+        color: #007bff; 
         text-align: center;
         margin-bottom: 30px;
     }
 
     .alert-danger {
-        background-color: #ffe6e6; /* Light red background for error */
-        color: #d32f2f; /* Dark red text for error */
+        background-color: #ffe6e6; 
+        color: #d32f2f; 
         padding: 15px;
         border-radius: 5px;
         margin-bottom: 20px;
@@ -88,8 +85,8 @@ ob_start();
     }
 
     .btn-primary {
-        background-color: #ffc107; /* Yellow button */
-        color: #000; /* Black text on yellow */
+        background-color: #ffc107; 
+        color: #000;
         padding: 12px 20px;
         border: none;
         border-radius: 5px;
@@ -99,7 +96,7 @@ ob_start();
     }
 
     .btn-primary:hover {
-        background-color: #ffca28; /* Slightly darker yellow on hover */
+        background-color: #ffca28; 
     }
 
     .mt-3 {
@@ -108,7 +105,7 @@ ob_start();
     }
 
     .mt-3 a {
-        color: #007bff; /* Blue link */
+        color: #007bff; 
         text-decoration: none;
     }
 

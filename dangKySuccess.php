@@ -68,12 +68,12 @@ ob_start();
 }
 
 .table-bordered th {
-    background-color: #ffc107; /* Màu vàng */
+    background-color: #ffc107;
     color: black;
 }
 
 .alert-success {
-    background-color: #007bff; /* Xanh dương */
+    background-color: #007bff; 
     border-color: #0056b3;
     color: white;
     padding: 15px;

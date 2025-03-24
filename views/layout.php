@@ -26,7 +26,6 @@
 
 <body>
     <?php
-    // Start session if not already started
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
@@ -36,7 +35,6 @@
     ?>
     <nav class="navbar navbar-expand-md navbar-dark">
         <div class="container">
-            <!-- <a class="navbar-brand" href="index.php">Test1</a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>

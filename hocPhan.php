@@ -1,51 +1,42 @@
 <?php 
-// Include database connection and models
 require_once 'config/db.php';
 require_once 'models/HocPhan.php';
 require_once 'models/SinhVien.php';
 
-// Start session
 session_start();
 
-// Create models
 $hocPhanModel = new HocPhan($conn);
 $sinhVienModel = new SinhVien($conn);
 
-// Ensure SoLuong column exists
 $hocPhanModel->addSoLuongColumn();
 
-// Get all courses with available slots
 $courses = $hocPhanModel->getCoursesWithSlots();
 
-// Get student info
+
 $student = $sinhVienModel->getStudentById($_SESSION['student_id']);
 
-// Handle course registration (add to cart)
+
 if (isset($_GET['register']) && !empty($_GET['register'])) {
     $maHP = $_GET['register'];
 
-    // Add course to cart in session
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
 
-    // Check if course is already in cart
+
     if (!in_array($maHP, $_SESSION['cart'])) {
         $_SESSION['cart'][] = $maHP;
     }
 
-    // Redirect to avoid duplicate submission
     header('Location: hocPhan.php');
     exit;
 }
-
-// Start output buffer
 ob_start();
 ?>
 
 <style>
     body {
-        background-color: #f0f8ff; /* Light blue background */
+        background-color: #f0f8ff; 
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -61,11 +52,11 @@ ob_start();
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 90%; /* Adjust width as needed */
+        width: 90%;
     }
 
     h2 {
-        color: #007bff; /* Blue heading */
+        color: #007bff;
         text-align: center;
         margin-bottom: 30px;
     }
@@ -83,7 +74,7 @@ ob_start();
     }
 
     .table th {
-        background-color: #ffc107; /* Yellow header */
+        background-color: #ffc107;
         color: #000;
         font-weight: bold;
     }
@@ -101,7 +92,7 @@ ob_start();
     }
 
     .btn-success {
-        background-color: #4caf50; /* Green button */
+        background-color: #4caf50;
         color: white;
     }
 
@@ -110,7 +101,7 @@ ob_start();
     }
 
     .btn-secondary {
-        background-color: #007bff; /* Blue button */
+        background-color: #007bff; 
         color: white;
     }
 
@@ -119,7 +110,7 @@ ob_start();
     }
 
     .btn-primary {
-        background-color: #ffc107; /* Yellow button */
+        background-color: #ffc107; 
         color: #000;
         padding: 12px 20px;
         font-weight: bold;
@@ -193,9 +184,8 @@ ob_start();
 </div>
 
 <?php
-// Get content from buffer
 $content = ob_get_clean();
 
-// Include layout
+
 include 'views/layout.php';
 ?>

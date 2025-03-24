@@ -1,12 +1,12 @@
 <?php
-// Include database connection
+
 require_once 'config/db.php';
 require_once 'models/SinhVien.php';
 
-// Create student model instance
+
 $sinhVienModel = new SinhVien($conn);
 
-// Check if ID is provided
+
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header('Location: index.php');
     exit;
@@ -20,23 +20,21 @@ if (!$student) {
     exit;
 }
 
-// Process form submission
+
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
     $hoTen = $_POST['HoTen'];
     $gioiTinh = $_POST['GioiTinh'];
     $ngaySinh = $_POST['NgaySinh'];
     $maNganh = $_POST['MaNganh'];
 
-    // Use existing image if no new one is uploaded
     $hinh = $student['Hinh'];
 
-    // Process image upload if provided
+    
     if (isset($_FILES['Hinh']) && $_FILES['Hinh']['error'] === UPLOAD_ERR_OK) {
         $uploadDir = 'Content/images/';
 
-        // Create directory if it doesn't exist
+       
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
@@ -45,11 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $uploadFile = $uploadDir . $fileName;
 
         if (move_uploaded_file($_FILES['Hinh']['tmp_name'], $uploadFile)) {
-            $hinh = '/' . $uploadFile; // Save path to database
+            $hinh = '/' . $uploadFile;
         }
     }
 
-    // Update student in database
+    
     if ($sinhVienModel->updateStudent($maSV, $hoTen, $gioiTinh, $ngaySinh, $hinh, $maNganh)) {
         header('Location: index.php');
         exit;
@@ -58,10 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Get all majors for dropdown
+
 $majors = $sinhVienModel->getAllMajors();
 
-// Start output buffer
+
 ob_start();
 ?>
 
@@ -104,7 +102,7 @@ ob_start();
     }
 
     .alert {
-        background-color: #ffeb3b; /* Hộp thông báo màu vàng */
+        background-color: #ffeb3b; 
         color: #000;
         border: 1px solid #c7b200;
     }

@@ -1,27 +1,27 @@
 <?php
-// Include database connection
+
 require_once 'config/db.php';
 require_once 'models/SinhVien.php';
 
-// Create student model instance
+
 $sinhVienModel = new SinhVien($conn);
 
-// Process form submission
+
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get form data
+
     $maSV = $_POST['MaSV'];
     $hoTen = $_POST['HoTen'];
     $gioiTinh = $_POST['GioiTinh'];
     $ngaySinh = $_POST['NgaySinh'];
     $maNganh = $_POST['MaNganh'];
 
-    // Process image upload
+ 
     $hinh = '';
     if (isset($_FILES['Hinh']) && $_FILES['Hinh']['error'] === UPLOAD_ERR_OK) {
         $uploadDir = 'Content/images/';
 
-        // Create directory if it doesn't exist
+
         if (!is_dir($uploadDir)) {
             mkdir($uploadDir, 0777, true);
         }
@@ -30,11 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $uploadFile = $uploadDir . $fileName;
 
         if (move_uploaded_file($_FILES['Hinh']['tmp_name'], $uploadFile)) {
-            $hinh = '/' . $uploadFile; // Save path to database
+            $hinh = '/' . $uploadFile; 
         }
     }
 
-    // Add student to database
+
     if ($sinhVienModel->addStudent($maSV, $hoTen, $gioiTinh, $ngaySinh, $hinh, $maNganh)) {
         header('Location: index.php');
         exit;
@@ -43,10 +43,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Get all majors for dropdown
+
 $majors = $sinhVienModel->getAllMajors();
 
-// Start output buffer
+
 ob_start();
 ?>
 

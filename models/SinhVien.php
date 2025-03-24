@@ -3,13 +3,11 @@ class SinhVien
 {
     private $conn;
 
-    // Constructor - Initialize with database connection
     public function __construct($connection)
     {
         $this->conn = $connection;
     }
 
-    // Get all students
     public function getAllStudents()
     {
         $sql = "SELECT s.*, n.TenNganh 
@@ -21,7 +19,6 @@ class SinhVien
         return $result;
     }
 
-    // Get student by ID
     public function getStudentById($maSV)
     {
         $sql = "SELECT s.*, n.TenNganh 
@@ -37,7 +34,7 @@ class SinhVien
         return $result->fetch_assoc();
     }
 
-    // Add new student
+
     public function addStudent($maSV, $hoTen, $gioiTinh, $ngaySinh, $hinh, $maNganh)
     {
         $sql = "INSERT INTO sinhvien (MaSV, HoTen, GioiTinh, NgaySinh, Hinh, MaNganh) 
@@ -49,7 +46,7 @@ class SinhVien
         return $stmt->execute();
     }
 
-    // Update student
+
     public function updateStudent($maSV, $hoTen, $gioiTinh, $ngaySinh, $hinh, $maNganh)
     {
         $sql = "UPDATE sinhvien 
@@ -62,10 +59,10 @@ class SinhVien
         return $stmt->execute();
     }
 
-    // Delete student
+
     public function deleteStudent($maSV)
     {
-        // First check if student has any registrations
+
         $sql = "SELECT COUNT(*) as count FROM dangky WHERE MaSV = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $maSV);
@@ -74,10 +71,9 @@ class SinhVien
         $row = $result->fetch_assoc();
 
         if ($row['count'] > 0) {
-            return false; // Cannot delete if student has registrations
+            return false; 
         }
 
-        // Delete the student
         $sql = "DELETE FROM sinhvien WHERE MaSV = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $maSV);
@@ -85,7 +81,6 @@ class SinhVien
         return $stmt->execute();
     }
 
-    // Get all majors
     public function getAllMajors()
     {
         $sql = "SELECT * FROM nganhhoc ORDER BY MaNganh";

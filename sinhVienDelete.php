@@ -1,12 +1,12 @@
 <?php
-// Include database connection
+
 require_once 'config/db.php';
 require_once 'models/SinhVien.php';
 
-// Create student model instance
+
 $sinhVienModel = new SinhVien($conn);
 
-// Check if ID is provided
+
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header('Location: index.php');
     exit;
@@ -20,10 +20,10 @@ if (!$student) {
     exit;
 }
 
-// Process form submission
+
 $message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_delete'])) {
-    // Delete student from database
+
     if ($sinhVienModel->deleteStudent($maSV)) {
         header('Location: index.php');
         exit;
@@ -32,13 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['confirm_delete'])) {
     }
 }
 
-// Start output buffer
 ob_start();
 ?>
 
 <style>
     body {
-        background-color: #f0f8ff; /* Light blue background */
+        background-color: #f0f8ff; 
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
@@ -54,17 +53,17 @@ ob_start();
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 90%; /* Adjust width as needed */
+        width: 90%;
     }
 
     h2 {
-        color: #007bff; /* Blue heading */
+        color: #007bff;
         text-align: center;
         margin-bottom: 30px;
     }
 
     h4 {
-        color: #d32f2f; /* Dark red for confirmation */
+        color: #d32f2f; 
         text-align: center;
         margin-bottom: 20px;
     }
@@ -106,7 +105,7 @@ ob_start();
     }
 
     .btn-danger {
-        background-color: #d32f2f; /* Red button */
+        background-color: #d32f2f; 
         color: white;
     }
 
@@ -115,7 +114,7 @@ ob_start();
     }
 
     .btn-secondary {
-        background-color: #007bff; /* Blue button */
+        background-color: #007bff; 
         color: white;
         margin-left: 10px;
     }
@@ -125,8 +124,8 @@ ob_start();
     }
 
     .alert-danger {
-        background-color: #ffe6e6; /* Light red background for error */
-        color: #d32f2f; /* Dark red text for error */
+        background-color: #ffe6e6; 
+        color: #d32f2f; 
         padding: 15px;
         border-radius: 5px;
         margin-bottom: 20px;
@@ -204,9 +203,9 @@ ob_start();
 </div>
 
 <?php
-// Get content from buffer
+
 $content = ob_get_clean();
 
-// Include layout
+
 include 'views/layout.php';
 ?>

@@ -7,7 +7,6 @@ class DangKy
         $this->conn = $connection;
     }
 
-    // Create new registration
     public function createRegistration($maSV)
     {
         $ngayDK = date("Y-m-d");
@@ -35,10 +34,10 @@ class DangKy
         $row = $result->fetch_assoc();
 
         if ($row['count'] > 0) {
-            return false; // Already registered for this course
+            return false; 
         }
 
-        // Add the course to registration
+
         $sql = "INSERT INTO chitietdangky (MaDK, MaHP) VALUES (?, ?)";
 
         $stmt = $this->conn->prepare($sql);
